@@ -10,21 +10,20 @@ const SplashScreen = ({navigation}) => {
   const [icon, setIcon] = useState([])
   const [title, setTitle] = useState('Loading ...')
   
-  const endPoint        = 'http://103.174.115.81';
- // const endPoint        = 'http://tes.ada-kita.com';
+  const endPoint        = 'https://mocki.io/v1/7732c205-c556-41a2-a2a8-46c9866492f5';
 
  // Pertanyaan
  const fetchIcon = async(url) => {
   try {
-  const response = await fetch(url+'/api/icon', {
+  const response = await fetch(url, {
       method: 'GET',
   })
 
   const data = await response.json(); 
   setIcon(data.data) 
   AsyncStorage.multiRemove(['icon']);
-  storeData('icon', {data});
-
+  storeData('icon', {value: data});
+  console.log(data)
     if (!response.ok) {
         setTitle('Terjadi kesalahan fetch API')
     }
@@ -39,11 +38,13 @@ const getDataIcon = () => {
   setTimeout(() => {
     getData('icon').then(res => {
       const datares = res;
+      console.log(res);
+      navigation.reset({index: 0, routes: [{name: 'Home'}]});
       if (datares) {
         navigation.reset({index: 0, routes: [{name: 'Home'}]});
       }else{
          setTitle('Terjadi kesalahan  pada storage')
-      //  navigation.reset({index: 0, routes: [{name: 'Home'}]});
+     
       }
     }); 
   }, 2000);

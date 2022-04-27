@@ -1,4 +1,4 @@
-package com.imsapps.newarchitecture;
+package com.hady.imsapps.newarchitecture;
 
 import android.app.Application;
 import androidx.annotation.NonNull;
@@ -19,9 +19,9 @@ import com.facebook.react.fabric.CoreComponentsRegistry;
 import com.facebook.react.fabric.EmptyReactNativeConfig;
 import com.facebook.react.fabric.FabricJSIModuleProvider;
 import com.facebook.react.uimanager.ViewManagerRegistry;
-import com.imsapps.BuildConfig;
-import com.imsapps.newarchitecture.components.MainComponentsRegistry;
-import com.imsapps.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
+import com.hady.imsapps.BuildConfig;
+import com.hady.imsapps.newarchitecture.components.MainComponentsRegistry;
+import com.hady.imsapps.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
 import java.util.ArrayList;
 import java.util.List;
 

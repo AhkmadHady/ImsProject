@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="com.imsapps">
+  package="com.hady.imsapps">
 
     <uses-permission android:name="android.permission.INTERNET" />
 

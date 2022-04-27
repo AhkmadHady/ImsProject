@@ -15,34 +15,22 @@ const Home = () => {
   const navigation = useNavigation(); 
   const [diskon, setDiskon]             = useState([])
   const [carabeli, setCarabeli]         = useState([])
-  const [dataIcon, setDataIcon]         = useState([])
-  const endPoint                        = 'http://103.174.115.81';
+  const [dataIcon, setDataIcon]         = useState([]) 
 
   useEffect(() => {
-    fetchDiskon(endPoint)
-    fetchPertanyaan(endPoint)
-   // fetchIcon(endPoint);
-    getData('icon').then(res => {
-       
-      const datares = res;
-      if (datares) {
-        setDataIcon(datares.data.data); 
-         
-      }else{
-        setDataIcon(); 
-      }
-    });
+    fetchDiskon()
+    fetchPertanyaan() 
+    getIcon()
   }, [])
 
     // Diskon
   const fetchDiskon = async(url) => {
       try {
-        const response = await fetch(url+'/api/diskon', {
+        const response = await fetch('https://mocki.io/v1/2cf1c783-3502-40e8-9927-08b63d55da39', {
             method: 'GET',
         })
 
         const data = await response.json();
-         
         setDiskon(data.data)
        // console.log(data.data);
         if (!response.ok) {
@@ -56,7 +44,7 @@ const Home = () => {
     // Pertanyaan
     const fetchPertanyaan = async(url) => {
         try {
-        const response = await fetch(url+'/api/carabeli', {
+        const response = await fetch('https://mocki.io/v1/962c28ce-c629-4e2a-be36-e78700af6810', {
             method: 'GET',
         })
 
@@ -70,24 +58,19 @@ const Home = () => {
             console.log(`Error: ${e}`);
         }
     } 
-  
-     // Pertanyaan
-//      const fetchIcon = async(url) => {
-//       try {
-//       const response = await fetch(url+'/api/icon', {
-//           method: 'GET',
-//       })
 
-//       const data = await response.json(); 
-//       setDataIcon(data.data)
-
-//       if (!response.ok) {
-//           console.log('Terjadi kesalahan');
-//       }
-//       } catch (e) {
-//           console.log(`Error: ${e}`);
-//     }
-//   } 
+    function getIcon() {
+      setTimeout(() => {
+        getData('icon').then(res => {
+          const datares = res;
+          if (datares) {
+            setDataIcon(datares.value.data);  
+          }else{
+            setDataIcon(); 
+          }
+        });
+      }, 1000); 
+    }
 
   return ( 
    <>
@@ -100,7 +83,7 @@ const Home = () => {
             <Text style={styles.titleMenu}>Main Menu</Text> 
             <ScrollView horizontal showsHorizontalScrollIndicator={false}>  
              
-            {dataIcon.length > 0 ? (
+             {dataIcon.length > 0 ? (
                     dataIcon.map((itemIcon, i) => {
                       
                     return(
@@ -112,7 +95,7 @@ const Home = () => {
                 })
                 ) : (<View>
                   <MainMenu iconlainnya="-" label=""/>
-              </View>)}
+              </View>)} 
             </ScrollView> 
           </View>
           <Gap height={30} />
