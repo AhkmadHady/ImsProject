@@ -19,7 +19,7 @@ const Diskon = ({url, harga, namabarang,lokasi,terjual}) => {
             <Text style={styles.namaProduct}>{namabarang}</Text>
             <Gap height={5} />
             <Text style={styles.lokasi}>{lokasi}</Text>
-            <Gap height={30} /> 
+            <Gap height={20} /> 
             <Text style={styles.terjual}>{terjual}</Text>
         </View>
     </View>

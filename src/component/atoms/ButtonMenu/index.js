@@ -3,7 +3,7 @@ import React from 'react'
 
 const ButtonMenu = ({label,onPress,url}) => {
   return (
-    <TouchableOpacity activeOpacity={0.7} onPress={onPress}>
+    
         <View style={styles.body}>
             <View style={styles.images}>
                 <Image
@@ -14,8 +14,7 @@ const ButtonMenu = ({label,onPress,url}) => {
                 /> 
             </View>
             <Text style={styles.titleMenu}>{label}</Text>
-        </View>
-    </TouchableOpacity>
+        </View> 
   )
 }
 
