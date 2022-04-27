@@ -9,7 +9,7 @@ const SplashScreen = ({navigation}) => {
 
   const [icon, setIcon] = useState([])
   const [title, setTitle] = useState('Loading ...')
-  
+
   const endPoint        = 'https://mocki.io/v1/7732c205-c556-41a2-a2a8-46c9866492f5';
 
  // Pertanyaan

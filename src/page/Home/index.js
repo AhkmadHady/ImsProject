@@ -57,8 +57,8 @@ const Home = () => {
         } catch (e) {
             console.log(`Error: ${e}`);
         }
-    } 
-
+    }  
+    
     function getIcon() {
       setTimeout(() => {
         getData('icon').then(res => {
@@ -70,7 +70,7 @@ const Home = () => {
           }
         });
       }, 1000); 
-    }
+    }  
 
   return ( 
    <>
