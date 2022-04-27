@@ -71,23 +71,6 @@ const Home = () => {
         }
     } 
   
-     // Pertanyaan
-//      const fetchIcon = async(url) => {
-//       try {
-//       const response = await fetch(url+'/api/icon', {
-//           method: 'GET',
-//       })
-
-//       const data = await response.json(); 
-//       setDataIcon(data.data)
-
-//       if (!response.ok) {
-//           console.log('Terjadi kesalahan');
-//       }
-//       } catch (e) {
-//           console.log(`Error: ${e}`);
-//     }
-//   } 
 
   return ( 
    <>
