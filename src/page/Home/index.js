@@ -12,39 +12,26 @@ import { getData, storeData } from '../../utils/storage';
 import { useNavigation } from '@react-navigation/native';
 
 const Home = () => {
-  const navigation = useNavigation();
-  const [valueName, setValueName]   = useState('Keuangan')
-  const [pageName, setPageName]   = useState('Keuangan')
-  const [dataLainnya, setdataLainnya]   = useState('-')
-  const [dataKeuangan, setdataKeuangan] = useState('-')
-  const [dataTagihan, setdataTagihan]   = useState('-')
-  const [dataCat, setdataCat]           = useState('-')
-  const [dataKomputer, setdataKomputer] = useState('-')
-  const [dataFashion, setdataFashion]   = useState('-')
-  const [dataPesta, setdataPesta]       = useState('-')
-  const [dataKantor, setdataKantor]     = useState('-')
-  const [dataTravel, setdataTravel]     = useState('-')
+  const navigation = useNavigation(); 
   const [diskon, setDiskon]             = useState([])
   const [carabeli, setCarabeli]         = useState([])
   const [dataIcon, setDataIcon]         = useState([])
-  const endPoint                        = 'http://demo.sipontren.com';
+  const endPoint                        = 'http://103.174.115.81';
 
-  
   useEffect(() => {
     fetchDiskon(endPoint)
     fetchPertanyaan(endPoint)
+   // fetchIcon(endPoint);
     getData('icon').then(res => {
        
       const datares = res;
       if (datares) {
         setDataIcon(datares.data.data); 
-        console.log(datares.data.data);
+         
       }else{
         setDataIcon(); 
       }
     });
-   
- 
   }, [])
 
     // Diskon
@@ -82,26 +69,26 @@ const Home = () => {
         } catch (e) {
             console.log(`Error: ${e}`);
         }
-    }
-
-    const fetchpage = async(url,id) => {
-      try {
-      const response = await fetch(url+'/api/icon/'+id, {
-          method: 'GET',
-      })
-
-      const data = await response.json(); 
-      console.log(data)
-      setPageName(data.data)
-
-        if (!response.ok) {
-            console.log('Terjadi kesalahan');
-        }
-      } catch (e) {
-          console.log(`Error: ${e}`);
-      }
-  }
+    } 
   
+     // Pertanyaan
+//      const fetchIcon = async(url) => {
+//       try {
+//       const response = await fetch(url+'/api/icon', {
+//           method: 'GET',
+//       })
+
+//       const data = await response.json(); 
+//       setDataIcon(data.data)
+
+//       if (!response.ok) {
+//           console.log('Terjadi kesalahan');
+//       }
+//       } catch (e) {
+//           console.log(`Error: ${e}`);
+//     }
+//   } 
+
   return ( 
    <>
       <ScrollView> 

@@ -8,8 +8,10 @@ import { getData, storeData } from '../../utils/storage';
 const SplashScreen = ({navigation}) => {
 
   const [icon, setIcon] = useState([])
+  const [title, setTitle] = useState('Loading ...')
   
-  const endPoint        = 'http://demo.sipontren.com';
+  const endPoint        = 'http://103.174.115.81';
+ // const endPoint        = 'http://tes.ada-kita.com';
 
  // Pertanyaan
  const fetchIcon = async(url) => {
@@ -20,11 +22,13 @@ const SplashScreen = ({navigation}) => {
 
   const data = await response.json(); 
   setIcon(data.data) 
+  AsyncStorage.multiRemove(['icon']);
   storeData('icon', {data});
-  //localStorage.setItem("icon", JSON.stringify(data));
-  if (!response.ok) {
-      console.log('Terjadi kesalahan');
-  }
+
+    if (!response.ok) {
+        setTitle('Terjadi kesalahan fetch API')
+    }
+
   } catch (e) {
       // console.log(`Error: ${e}`);
   }
@@ -37,21 +41,22 @@ const getDataIcon = () => {
       const datares = res;
       if (datares) {
         navigation.reset({index: 0, routes: [{name: 'Home'}]});
-      } 
+      }else{
+         setTitle('Terjadi kesalahan  pada storage')
+      //  navigation.reset({index: 0, routes: [{name: 'Home'}]});
+      }
     }); 
   }, 2000);
 }
 
 useEffect(() => {
-  AsyncStorage.multiRemove(['icon']);
   fetchIcon(endPoint)
   getDataIcon();
 },[])
 
-
     return (
       <View style={styles.page}>
-        <Text>Loading ...</Text>
+        <Text>{title}</Text>
       </View>
     )
 }
