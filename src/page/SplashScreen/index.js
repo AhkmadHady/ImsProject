@@ -10,8 +10,7 @@ const SplashScreen = ({navigation}) => {
   const [icon, setIcon] = useState([])
   const [title, setTitle] = useState('Loading ...')
   
-  const endPoint        = 'http://103.174.115.81';
- // const endPoint        = 'http://tes.ada-kita.com';
+  const endPoint        = 'http://103.174.115.81'; 
 
  // Pertanyaan
  const fetchIcon = async(url) => {
@@ -42,8 +41,7 @@ const getDataIcon = () => {
       if (datares) {
         navigation.reset({index: 0, routes: [{name: 'Home'}]});
       }else{
-         setTitle('Terjadi kesalahan  pada storage')
-      //  navigation.reset({index: 0, routes: [{name: 'Home'}]});
+         setTitle('Terjadi kesalahan  pada storage') 
       }
     }); 
   }, 2000);
